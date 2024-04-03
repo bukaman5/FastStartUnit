@@ -1,0 +1,40 @@
+<column name="id" type="int" autoIncrement="true">
+        <constraints nullable="false" primaryKey="true"/>
+</column>
+
+
+ В ски пассе: <column name="coach_id" type="int">
+                <constraints foreignKeyName="coach_id" referencedTableName="coach" referencedColumnNames="id"/>
+            </column>
+
+
+            <?xml version="1.0" encoding="UTF-8" ?>
+            <databaseChangeLog
+                    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                                  http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+                <changeSet id="2" author="Misha">
+                    <createTable tableName="visitor">
+                </changeSet>
+            </databaseChangeLog>
+
+            select from join
+
+
+
+
+             <include file="03-changeset-join-table2.xml" relativeToChangelogFile="true"/>
+
+
+                <column name="visitor_id" type="int">
+                             <constraints foreignKeyName="visitor_id" referencedTableName="visitor" referencedColumnNames="id"/>
+                         </column>
+                         <column name="coach_id" type="int">
+                             <constraints foreignKeyName="coach_id" referencedTableName="coach" referencedColumnNames="id"/>
+                         </column>
+
+
+                          <column name="coach_id" type="int">
+                                         <constraints foreignKeyName="coach_id" referencedTableName="coach" referencedColumnNames="id"/>
+                                     </column>
