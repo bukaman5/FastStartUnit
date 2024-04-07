@@ -34,7 +34,6 @@ public class CoachController {
     }
 
     @PostMapping("/coaches")
-    @Transactional
     public Coach addCoach(@RequestBody Coach theCoach) {
         return coachService.save(theCoach);
     }
@@ -45,13 +44,11 @@ public class CoachController {
     }
 
     @PutMapping("/coaches")
-    @Transactional
     public Coach updateCoach(@RequestBody Coach theCoach) {
         return coachService.save(theCoach);
     }
 
     @DeleteMapping("coaches/{coachId}")
-    @Transactional
     public HttpStatus deleteCoach(@PathVariable long coachId) {
         this.coachService.deleteById(coachId);
         return HttpStatus.OK;
