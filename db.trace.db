@@ -793,3 +793,19 @@ select coach0_.id as id1_0_, coach0_.category as category2_0_, coach0_.date_of_b
 org.h2.jdbc.JdbcSQLSyntaxErrorException: Таблица "COACH" не найдена
 Table "COACH" not found; SQL statement:
 select coach0_.id as id1_0_, coach0_.category as category2_0_, coach0_.date_of_birth as date_of_3_0_, coach0_.full_name as full_nam4_0_, coach0_.gender as gender5_0_, coach0_.photo as photo6_0_ from coach coach0_ [42102-214]
+2024-04-07 19:43:08 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Таблица "COACH" не найдена
+Table "COACH" not found; SQL statement:
+select coach0_.id as id1_0_, coach0_.category as category2_0_, coach0_.date_of_birth as date_of_3_0_, coach0_.full_name as full_nam4_0_, coach0_.gender as gender5_0_, coach0_.photo as photo6_0_ from coach coach0_ [42102-214]
+2024-04-07 20:00:53 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Таблица "COACH" не найдена
+Table "COACH" not found; SQL statement:
+select coach0_.id as id1_0_, coach0_.category as category2_0_, coach0_.date_of_birth as date_of_3_0_, coach0_.full_name as full_nam4_0_, coach0_.gender as gender5_0_, coach0_.photo as photo6_0_ from coach coach0_ [42102-214]
+2024-04-07 20:25:22 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Синтаксическая ошибка в выражении SQL "delete [*]* from DATABASECHANGELOG where id = 2"; ожидалось "identifier"
+Syntax error in SQL statement "delete [*]* from DATABASECHANGELOG where id = 2"; expected "identifier"; SQL statement:
+delete * from DATABASECHANGELOG where id = 2 [42001-214]
+2024-04-07 20:26:08 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Синтаксическая ошибка в выражении SQL "delete [*]* from DATABASECHANGELOG"; ожидалось "identifier"
+Syntax error in SQL statement "delete [*]* from DATABASECHANGELOG"; expected "identifier"; SQL statement:
+delete * from DATABASECHANGELOG [42001-214]
