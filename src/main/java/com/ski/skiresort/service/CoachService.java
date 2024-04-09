@@ -1,18 +1,21 @@
 package com.ski.skiresort.service;
 
 import com.ski.skiresort.domain.entity.Coach;
+import com.ski.skiresort.dto.CoachDto;
+import com.ski.skiresort.dto.CoachResponse;
 
 import java.util.List;
 
 public interface CoachService {
 
-    List<Coach> findAll();
+    CoachDto createCoach(CoachDto coachDto);
 
-    Coach save(Coach theCoach);
+    CoachResponse getAllCoach(int pageNo, int pageSize);
 
-    void deleteById(long theId);
+    CoachDto getCoachById(Long id);
 
-    Coach findById(long theId);
+    CoachDto updateCoach(CoachDto coachDto, Long id);
 
+    void deleteCoachById(Long id);
 }
 

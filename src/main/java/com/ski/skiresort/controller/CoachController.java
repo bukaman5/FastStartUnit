@@ -2,18 +2,14 @@ package com.ski.skiresort.controller;
 
 
 import com.ski.skiresort.domain.entity.Coach;
+import com.ski.skiresort.dto.CoachDto;
+import com.ski.skiresort.dto.CoachResponse;
 import com.ski.skiresort.service.CoachService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -29,29 +25,33 @@ public class CoachController {
     }
 
     @GetMapping("/coach")
-    public List<Coach> findAll() {
-        return coachService.findAll();
+    public ResponseEntity<CoachResponse> findAll(
+        @RequestParam(value = "pageNo", defaultValue = "0", required = false) int pageNo,
+        @RequestParam(value = "pageSize", defaultValue = "10", required = false) int pageSize
+    ) {
+            return new ResponseEntity<>(coachService.getAllCoach(pageNo, pageSize), HttpStatus.OK);
+}
+    @GetMapping("/coaches/{theId}")
+    public ResponseEntity<CoachDto> findById(@PathVariable long theId) {
+        return ResponseEntity.ok(coachService.getCoachById(theId));
     }
 
     @PostMapping("/coaches")
-    public Coach addCoach(@RequestBody Coach theCoach) {
-        return coachService.save(theCoach);
+    @ResponseStatus(HttpStatus.CREATED)
+    public ResponseEntity<CoachDto> addCoach(@RequestBody CoachDto coachDto) {
+        return new ResponseEntity<>(coachService.createCoach(coachDto), HttpStatus.CREATED);
     }
 
-    @GetMapping("/coaches/{theId}")
-    public Coach findById(@PathVariable long theId) {
-        return coachService.findById(theId);
+    @PutMapping("/coaches/{id}/update")
+    public ResponseEntity<CoachDto> updateCoach(@RequestBody CoachDto coachDto, @PathVariable("id") long coachID) {
+        CoachDto response = coachService.updateCoach(coachDto, coachID);
+        return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
-    @PutMapping("/coaches")
-    public Coach updateCoach(@RequestBody Coach theCoach) {
-        return coachService.save(theCoach);
-    }
-
-    @DeleteMapping("coaches/{coachId}")
-    public HttpStatus deleteCoach(@PathVariable long coachId) {
-        this.coachService.deleteById(coachId);
-        return HttpStatus.OK;
+    @DeleteMapping("coaches/{id}/delete")
+    public ResponseEntity<String> deleteCoach(@PathVariable("id") long coachId) {
+        coachService.deleteCoachById(coachId);
+        return new ResponseEntity<>("Coach deleted", HttpStatus.OK);
     }
 
 
