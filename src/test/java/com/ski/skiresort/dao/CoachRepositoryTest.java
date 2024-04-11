@@ -49,7 +49,6 @@ public class CoachRepositoryTest {
     public void getListOfCoachesTest(){
 
         List<Coach> coaches = coachRepository.findAll();
-
         Assertions.assertThat(coaches.size()).isGreaterThan(0);
 
     }
@@ -68,11 +67,8 @@ public class CoachRepositoryTest {
                 .build();
 
         coachRepository.save(coach);
-
         coach.setFullName("MishaChanged");
-
         Coach coachUpdated =  coachRepository.save(coach);
-
         Assertions.assertThat(coachUpdated.getFullName()).isEqualTo("MishaChanged");
 
     }
@@ -83,15 +79,10 @@ public class CoachRepositoryTest {
     public void deleteEmployeeTest(){
 
         Coach coach = coachRepository.findById(1L).get();
-
         coachRepository.delete(coach);
-
         //coachRepository.deleteById(1L);
-
         Coach coach1 = null;
-
         Optional<Coach> optionalCoach = coachRepository.findByFullName("Misha");
-
         if(optionalCoach.isPresent()){
             coach1 = optionalCoach.get();
         }
